@@ -1,0 +1,56 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Akua Mensah",
+      "location": "East Legon, Accra",
+      "rating": 5,
+      "text": "Absolutely love my 3D carpet! The quality is amazing and it transformed my living room completely. Delivery was super fast!",
+      "product": "3D Center Carpet",
+      "date": "2024-01-15",
+      "verified": true
+    },
+    {
+      "id": 2,
+      "name": "Kwame Asante",
+      "location": "Kumasi",
+      "rating": 5,
+      "text": "Best carpet shop in Ghana! The fluffy carpet feels like walking on clouds. Customer service was excellent throughout.",
+      "product": "Fluffy Comfort",
+      "date": "2024-01-10",
+      "verified": true
+    },
+    {
+      "id": 3,
+      "name": "Esi Boateng",
+      "location": "Tema",
+      "rating": 4,
+      "text": "Very happy with my purchase. The 3D effect is stunning and gets compliments from everyone who visits. Will definitely buy again!",
+      "product": "3D Luxury Design",
+      "date": "2024-01-05",
+      "verified": true
+    },
+    {
+      "id": 4,
+      "name": "Yaw Ofori",
+      "location": "Cape Coast",
+      "rating": 5,
+      "text": "Quality exceeded my expectations. The carpet is durable, easy to clean, and looks exactly like the pictures. Great value for money!",
+      "product": "Fluffy Plush",
+      "date": "2023-12-28",
+      "verified": true
+    },
+    {
+      "id": 5,
+      "name": "Ama Darko",
+      "location": "Takoradi",
+      "rating": 5,
+      "text": "Ordered 3 carpets for my office and they all arrived perfectly. Professional service and premium quality products. Highly recommended!",
+      "product": "3D Premium Collection",
+      "date": "2023-12-20",
+      "verified": true
+    }
+  ],
+  "averageRating": 4.8,
+  "totalTestimonials": 5
+}

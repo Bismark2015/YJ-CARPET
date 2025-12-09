@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JY CARPET - Premium 3D & Fluffy Carpets in Ghana">
+    <meta name="keywords" content="3D carpets Ghana, fluffy carpets, luxury carpets Accra, home décor carpets, carpets Ghana">
+    <title>JY CARPET | Premium 3D & Fluffy Carpets</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader">
+            <div class="carpet-loader"></div>
+            <p>Loading JY CARPET SHOP...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <div>
+                    <h1 class="logo-text">JY CARPET</h1>
+                    <p class="logo-subtext">Premium Flooring Solutions</p>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div class="whatsapp-mobile">
+                    <a href="https://wa.me/233249402659" target="_blank" class="whatsapp-btn-mobile">
+                        <i class="fab fa-whatsapp"></i> Order Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search carpets...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="header-whatsapp">
+                    <a href="https://wa.me/233249402659" target="_blank" class="whatsapp-header">
+                        <i class="fab fa-whatsapp"></i> <span>0249402659</span>
+                    </a>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <div class="hero-text">
+                <h2 class="hero-title">Transform Your Space with <span>Luxury Carpets</span></h2>
+                <p class="hero-description">Premium 3D & Fluffy Carpets that add comfort, style, and elegance to your home or office.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">Shop Collection</a>
+                    <a href="https://wa.me/233249402659?text=Hi%20JY%20CARPET%2C%20I'm%20interested%20in%20your%20carpets" 
+                       target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Order
+                    </a>
+                </div>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-truck"></i>
+                        <span>Fast Delivery</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Quality Guarantee</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tags"></i>
+                        <span>Affordable Prices</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-cards">
+                    <div class="floating-card card1">
+                        <div class="placeholder-image">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <div class="floating-label">3D Collection</div>
+                    </div>
+                    <div class="floating-card card2">
+                        <div class="placeholder-image">
+                            <i class="fas fa-rug"></i>
+                        </div>
+                        <div class="floating-label">Fluffy Range</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="category-filter">
+        <div class="container">
+            <div class="filter-title">
+                <h3>Browse by Category</h3>
+                <p>Find your perfect carpet</p>
+            </div>
+            <div class="filter-buttons" id="filterButtons">
+                <!-- Filters will be loaded from JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Premium Collection</h2>
+                <p class="section-subtitle">Handpicked carpets for every space and style</p>
+            </div>
+            
+            <div class="products-controls">
+                <div class="products-count">
+                    Showing <span id="productsCount">5</span> products
+                </div>
+                <div class="sort-by">
+                    <label for="sortSelect">Sort by:</label>
+                    <select id="sortSelect">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="new">New Arrivals</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded from JavaScript -->
+            </div>
+
+            <div class="products-empty" id="productsEmpty" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No products found</h3>
+                <p>Try adjusting your search or filter</p>
+                <button class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Customer Testimonials</h2>
+                <p class="section-subtitle">What our customers say about JY CARPET</p>
+            </div>
+            
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <!-- Testimonials loaded from JavaScript -->
+            </div>
+            
+            <div class="testimonial-controls">
+                <button class="testimonial-prev" id="testimonialPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="testimonial-dots" id="testimonialDots">
+                    <!-- Dots will be added by JavaScript -->
+                </div>
+                <button class="testimonial-next" id="testimonialNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="add-testimonial">
+                <h3>Share Your Experience</h3>
+                <p>Bought from us? Share your feedback!</p>
+                <button class="btn btn-primary" id="openTestimonialForm">
+                    <i class="fas fa-comment"></i> Add Testimonial
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick View Modal -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Shopping Cart</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        
+        <div class="cart-body" id="cartBody">
+            <!-- Cart items loaded from localStorage -->
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <a href="#products" class="btn btn-secondary">Browse Products</a>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be loaded here -->
+            </div>
+        </div>
+        
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Subtotal:</span>
+                    <span class="cart-subtotal">GH₵ 0</span>
+                </div>
+                <div class="cart-total">
+                    <span>Delivery:</span>
+                    <span class="cart-delivery">GH₵ 0</span>
+                </div>
+                <div class="cart-total grand-total">
+                    <span>Total:</span>
+                    <span class="cart-grand-total">GH₵ 0</span>
+                </div>
+            </div>
+            
+            <div class="cart-actions">
+                <a href="https://wa.me/233249402659" target="_blank" class="btn btn-whatsapp checkout-btn">
+                    <i class="fab fa-whatsapp"></i> Checkout on WhatsApp
+                </a>
+                <button class="btn btn-secondary clear-cart-btn" id="clearCart">
+                    <i class="fas fa-trash"></i> Clear Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Toggle Button -->
+    <button class="cart-toggle" id="cartToggle">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+    <!-- Testimonial Modal -->
+    <div class="modal-overlay" id="testimonialModal">
+        <div class="modal-content testimonial-modal">
+            <button class="modal-close" id="testimonialModalClose">&times;</button>
+            <div class="modal-body">
+                <h3>Share Your Experience</h3>
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <label for="testimonialName">Your Name *</label>
+                        <input type="text" id="testimonialName" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="testimonialLocation">Your Location</label>
+                        <input type="text" id="testimonialLocation" placeholder="e.g., Accra, Kumasi">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="testimonialRating">Your Rating *</label>
+                        <div class="rating-input">
+                            <span class="star" data-value="1">☆</span>
+                            <span class="star" data-value="2">☆</span>
+                            <span class="star" data-value="3">☆</span>
+                            <span class="star" data-value="4">☆</span>
+                            <span class="star" data-value="5">☆</span>
+                        </div>
+                        <input type="hidden" id="testimonialRating" value="5" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="testimonialText">Your Testimonial *</label>
+                        <textarea id="testimonialText" rows="5" 
+                                  placeholder="Tell us about your experience with JY CARPET..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="testimonialProduct">Product Purchased (Optional)</label>
+                        <select id="testimonialProduct">
+                            <option value="">Select a product</option>
+                            <option value="3D Geometric Carpet">3D Geometric Carpet</option>
+                            <option value="3D Wave Carpet">3D Wave Carpet</option>
+                            <option value="3D Diamond Carpet">3D Diamond Carpet</option>
+                            <option value="Fluffy White Carpet">Fluffy White Carpet</option>
+                            <option value="Fluffy Grey Carpet">Fluffy Grey Carpet</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit Testimonial
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="cancelTestimonial">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/233249402659" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">Order on WhatsApp</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">JY CARPET</div>
+                    <p class="footer-description">Providing premium quality carpets to transform your living spaces across Ghana.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0249402659</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 0249402659</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Accra, Ghana</li>
+                        <li><i class="fas fa-envelope"></i> jycarpet@gmail.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Business Hours</h4>
+                    <ul>
+                        <li>Monday - Friday: 8am - 6pm</li>
+                        <li>Saturday: 9am - 4pm</li>
+                        <li>Sunday: 10am - 2pm</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 JY CARPET. All rights reserved.</p>
+                <p class="footer-credits">Designed with ❤️ for Ghanaian homes</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
