@@ -7,6 +7,7 @@ const productsData = [
         category: "3d",
         size: "140x200 cm",
         description: "Modern geometric 3D pattern perfect for living rooms. Durable and stylish.",
+        material: "Polyester",
         rating: 5,
         reviews: 42,
         stock: 12,
@@ -21,6 +22,7 @@ const productsData = [
         category: "3d",
         size: "160x230 cm",
         description: "Beautiful wave pattern 3D carpet. Adds depth and elegance to any room.",
+        material: "Nylon Blend",
         rating: 4,
         reviews: 28,
         stock: 8,
@@ -35,6 +37,7 @@ const productsData = [
         category: "3d",
         size: "180x250 cm",
         description: "Premium diamond pattern 3D carpet. Luxurious feel with anti-slip backing.",
+        material: "Premium Polyester",
         rating: 5,
         reviews: 56,
         stock: 6,
@@ -49,6 +52,7 @@ const productsData = [
         category: "3d",
         size: "140x200 cm",
         description: "Classic square pattern 3D carpet. Perfect for offices and study rooms.",
+        material: "Polypropylene",
         rating: 4,
         reviews: 34,
         stock: 15,
@@ -63,6 +67,7 @@ const productsData = [
         category: "3d",
         size: "200x300 cm",
         description: "Large circular pattern 3D carpet. Makes a bold statement in spacious rooms.",
+        material: "Wool Blend",
         rating: 5,
         reviews: 39,
         stock: 4,
@@ -77,6 +82,7 @@ const productsData = [
         category: "fluffy",
         size: "140x200 cm",
         description: "Soft and cozy white fluffy carpet. Perfect for bedrooms and nurseries.",
+        material: "Microfiber",
         rating: 5,
         reviews: 67,
         stock: 10,
@@ -91,6 +97,7 @@ const productsData = [
         category: "fluffy",
         size: "160x230 cm",
         description: "Elegant grey fluffy carpet. Hides stains well and feels incredibly soft.",
+        material: "Chenille",
         rating: 4,
         reviews: 45,
         stock: 9,
@@ -105,6 +112,7 @@ const productsData = [
         category: "fluffy",
         size: "120x180 cm",
         description: "Adorable pink fluffy carpet. Perfect for kids' rooms and adds a pop of color.",
+        material: "Plush",
         rating: 5,
         reviews: 52,
         stock: 7,
@@ -119,6 +127,7 @@ const productsData = [
         category: "fluffy",
         size: "180x250 cm",
         description: "Warm beige fluffy carpet. Neutral color that matches any decor style.",
+        material: "Faux Fur",
         rating: 4,
         reviews: 38,
         stock: 5,
@@ -133,6 +142,7 @@ const productsData = [
         category: "fluffy",
         size: "200x300 cm",
         description: "Vibrant multi-color fluffy carpet. Adds fun and energy to any space.",
+        material: "Polyester Blend",
         rating: 5,
         reviews: 41,
         stock: 3,
@@ -469,6 +479,301 @@ function updateCartQuantity(productId, newQuantity) {
     }
 }
 
+// ===== ENHANCED WHATSAPP CHECKOUT WITH IMAGES =====
+function generateWhatsAppCheckoutMessage() {
+    if (cart.length === 0) return '';
+    
+    let message = `Hi JY CARPET,%0A%0AI want to place an order:%0A%0A`;
+    
+    // Add each cart item with details
+    cart.forEach((item, index) => {
+        message += `━━━━━━━━━━━━━━━━━━━━%0A`;
+        message += `*PRODUCT ${index + 1}*%0A`;
+        message += `━━━━━━━━━━━━━━━━━━━━%0A`;
+        message += `📦 *Name:* ${item.name}%0A`;
+        message += `📏 *Size:* ${item.size}%0A`;
+        message += `💰 *Price:* GH₵ ${item.price}%0A`;
+        message += `📦 *Quantity:* ${item.quantity}%0A`;
+        message += `🧾 *Subtotal:* GH₵ ${item.price * item.quantity}%0A`;
+        message += `🖼️ *Image File:* ${item.image.split('/').pop()}%0A%0A`;
+    });
+    
+    // Calculate totals
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const delivery = subtotal > 1000 ? 0 : 50;
+    const grandTotal = subtotal + delivery;
+    
+    message += `━━━━━━━━━━━━━━━━━━━━%0A`;
+    message += `*ORDER SUMMARY*%0A`;
+    message += `━━━━━━━━━━━━━━━━━━━━%0A`;
+    message += `📊 *Subtotal:* GH₵ ${subtotal}%0A`;
+    message += `🚚 *Delivery:* ${delivery === 0 ? 'FREE' : `GH₵ ${delivery}`}%0A`;
+    message += `💳 *TOTAL:* GH₵ ${grandTotal}%0A%0A`;
+    
+    // Instructions for images
+    message += `📸 *IMPORTANT:* Please take a screenshot of the order summary below this message.%0A`;
+    message += `The screenshot will show all product images clearly.%0A%0A`;
+    
+    // Customer info request
+    message += `*PLEASE PROVIDE:*%0A`;
+    message += `👤 *Full Name:* ________%0A`;
+    message += `📞 *Phone:* ________%0A`;
+    message += `📍 *Delivery Address:* ________%0A%0A`;
+    
+    message += `Thank you! I'll send the screenshot now.`;
+    
+    return message;
+}
+
+function generateVisualOrderSummary() {
+    if (cart.length === 0) return '';
+    
+    let summary = `
+        <div class="order-summary" style="font-family: 'Poppins', Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 25px; border: 3px solid #25D366; border-radius: 15px; background: white;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h1 style="color: #25D366; margin: 0; font-size: 28px; font-weight: 700;">JY CARPET</h1>
+                <p style="color: #666; margin: 5px 0 0 0; font-size: 16px;">Premium 3D & Fluffy Carpets</p>
+                <div style="margin-top: 10px; padding: 8px 15px; background: #f0f9ff; border-radius: 20px; display: inline-block;">
+                    <strong>📞 WhatsApp:</strong> 0249402659
+                </div>
+            </div>
+            
+            <h2 style="text-align: center; color: #333; border-bottom: 2px solid #25D366; padding-bottom: 10px; margin-bottom: 20px;">ORDER SUMMARY</h2>
+            
+            <div style="margin: 25px 0;">
+                <h3 style="color: #333; margin-bottom: 15px; font-size: 18px;">📦 Order Items</h3>
+    `;
+    
+    // Product items with image thumbnails
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        summary += `
+            <div style="display: flex; align-items: center; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; border-radius: 10px; background: #f9f9f9;">
+                <div style="width: 80px; height: 80px; margin-right: 15px; flex-shrink: 0;">
+                    <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; border: 2px solid #ddd;" 
+                         onerror="this.src='data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"80\" viewBox=\"0 0 80 80\"><rect width=\"100%\" height=\"100%\" fill=\"%23f5f5f5\"/><text x=\"50%\" y=\"50%\" font-family=\"Arial\" font-size=\"10\" text-anchor=\"middle\" dy=\".3em\" fill=\"%23666\">${item.name}</text></svg>'">
+                </div>
+                <div style="flex: 1;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                        <strong style="color: #333; font-size: 16px;">${item.name}</strong>
+                        <span style="background: #25D366; color: white; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">${item.size}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; color: #666; font-size: 14px; margin-bottom: 5px;">
+                        <span>Price: GH₵ ${item.price}</span>
+                        <span>Qty: ${item.quantity}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: #333; font-weight: 600;">Item Total:</span>
+                        <span style="color: #25D366; font-weight: 700; font-size: 18px;">GH₵ ${itemTotal}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    // Calculate totals
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const delivery = subtotal > 1000 ? 0 : 50;
+    const grandTotal = subtotal + delivery;
+    
+    summary += `
+            </div>
+            
+            <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; margin: 25px 0;">
+                <h3 style="color: #333; margin-bottom: 15px; font-size: 18px;">🧾 Order Summary</h3>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>Subtotal:</span>
+                    <strong>GH₵ ${subtotal}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>Delivery Fee:</span>
+                    <strong style="color: ${delivery === 0 ? '#27AE60' : '#333'}">${delivery === 0 ? 'FREE 🎉' : `GH₵ ${delivery}`}</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px; padding-top: 15px; border-top: 2px solid #ddd; font-size: 20px;">
+                    <strong>Total Amount:</strong>
+                    <strong style="color: #25D366; font-size: 24px;">GH₵ ${grandTotal}</strong>
+                </div>
+            </div>
+            
+            <div style="background: #fff8e1; padding: 20px; border-radius: 10px; border-left: 4px solid #F39C12; margin: 25px 0;">
+                <h4 style="color: #333; margin-bottom: 10px; font-size: 16px;">📝 Important Notes</h4>
+                <ul style="margin: 0; padding-left: 20px; color: #666; font-size: 14px; line-height: 1.6;">
+                    <li>Free delivery for orders over GH₵1000</li>
+                    <li>Accra: 1-hour delivery</li>
+                    <li>Other regions: 1 business day</li>
+                    <li>Payment: Mobile Money, Cash, Bank Transfer</li>
+                    <li>Contact: WhatsApp 0249402659</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; color: #666; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                <p>Generated: ${new Date().toLocaleDateString('en-GB', { 
+                    day: '2-digit', 
+                    month: 'short', 
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })}</p>
+                <p>Thank you for shopping with JY CARPET! 🎉</p>
+            </div>
+        </div>
+    `;
+    
+    return summary;
+}
+
+function showOrderSummary() {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+    
+    const summaryHTML = generateVisualOrderSummary();
+    
+    // Create a new window for the order summary
+    const printWindow = window.open('', '_blank', 'width=800,height=900');
+    
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>JY CARPET - Order Summary</title>
+            <style>
+                body { 
+                    font-family: 'Poppins', Arial, sans-serif;
+                    margin: 0;
+                    padding: 20px;
+                    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                    min-height: 100vh;
+                }
+                
+                .print-actions {
+                    text-align: center;
+                    margin: 30px 0;
+                }
+                
+                .print-btn {
+                    padding: 12px 30px;
+                    background: #25D366;
+                    color: white;
+                    border: none;
+                    border-radius: 25px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+                }
+                
+                .print-btn:hover {
+                    background: #1DA851;
+                    transform: translateY(-2px);
+                    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+                }
+                
+                .close-btn {
+                    padding: 12px 30px;
+                    background: #666;
+                    color: white;
+                    border: none;
+                    border-radius: 25px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-left: 15px;
+                    transition: all 0.3s ease;
+                }
+                
+                .close-btn:hover {
+                    background: #555;
+                    transform: translateY(-2px);
+                }
+                
+                .instructions {
+                    background: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    margin: 20px auto;
+                    max-width: 600px;
+                    border-left: 4px solid #25D366;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                }
+                
+                .instructions h3 {
+                    color: #333;
+                    margin-top: 0;
+                    margin-bottom: 15px;
+                }
+                
+                .instructions ol {
+                    margin: 0;
+                    padding-left: 20px;
+                    color: #666;
+                    line-height: 1.6;
+                }
+                
+                .instructions li {
+                    margin-bottom: 10px;
+                }
+                
+                @media print {
+                    .print-actions, .instructions {
+                        display: none !important;
+                    }
+                    
+                    body {
+                        background: white !important;
+                        padding: 0 !important;
+                    }
+                }
+            </style>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        </head>
+        <body>
+            <div class="instructions">
+                <h3>📱 How to Complete Your Order:</h3>
+                <ol>
+                    <li><strong>Take a screenshot</strong> of this order summary (Ctrl+PrtScn on Windows, Cmd+Shift+4 on Mac)</li>
+                    <li><strong>Click "Send to WhatsApp"</strong> button below to send your order details</li>
+                    <li><strong>Send the screenshot</strong> on WhatsApp along with the message</li>
+                    <li><strong>Provide your details</strong> (Name, Phone, Address) in the WhatsApp chat</li>
+                    <li>We'll confirm your order and send payment details</li>
+                </ol>
+            </div>
+            
+            ${summaryHTML}
+            
+            <div class="print-actions">
+                <button onclick="sendToWhatsApp()" class="print-btn">
+                    <i class="fab fa-whatsapp"></i> Send to WhatsApp
+                </button>
+                <button onclick="window.print()" class="print-btn">
+                    <i class="fas fa-print"></i> Print / Save as PDF
+                </button>
+                <button onclick="window.close()" class="close-btn">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+            
+            <script>
+                function sendToWhatsApp() {
+                    const message = \`${generateWhatsAppCheckoutMessage()}\`;
+                    window.open('https://wa.me/233249402659?text=' + encodeURIComponent(message), '_blank');
+                }
+            </script>
+        </body>
+        </html>
+    `);
+    
+    printWindow.document.close();
+}
+
 function updateCart() {
     const cartCount = document.getElementById('cartCount');
     const cartItems = document.getElementById('cartItems');
@@ -516,18 +821,22 @@ function updateCart() {
         
         // Update cart totals
         const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const delivery = subtotal > 1000 ? 0 : 50; // Free delivery for orders over GH₵1000
+        const delivery = subtotal > 1000 ? 0 : 50;
         const grandTotal = subtotal + delivery;
         
         document.querySelector('.cart-subtotal').textContent = `GH₵ ${subtotal}`;
         document.querySelector('.cart-delivery').textContent = delivery === 0 ? 'FREE' : `GH₵ ${delivery}`;
         document.querySelector('.cart-grand-total').textContent = `GH₵ ${grandTotal}`;
         
-        // Update checkout message
+        // Update checkout button to show order summary first
         const checkoutBtn = document.querySelector('.checkout-btn');
-        const cartItemsText = cart.map(item => `${item.name} (${item.size}) x${item.quantity}`).join('%0A');
-        const checkoutMessage = `Hi JY CARPET,%0AI want to checkout these items:%0A%0A${cartItemsText}%0A%0ATotal: GH₵ ${grandTotal}%0A%0APlease send me payment details.`;
-        checkoutBtn.href = `https://wa.me/233249402659?text=${checkoutMessage}`;
+        checkoutBtn.onclick = function(e) {
+            e.preventDefault();
+            showOrderSummary();
+        };
+        
+        // Also update the href for direct WhatsApp (as backup)
+        checkoutBtn.href = `https://wa.me/233249402659?text=${encodeURIComponent(generateWhatsAppCheckoutMessage())}`;
     }
 }
 
